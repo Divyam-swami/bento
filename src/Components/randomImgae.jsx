@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 const RandomImage = () => {
-  const [path, setPath] = useState("");
+    const [index, setIndex] = useState(0);
   const [fade, setFade] = useState(true);
 
   const images = [
@@ -20,24 +20,21 @@ const RandomImage = () => {
   ];
 
   useEffect(() => {
-    let index = 0;
-    setPath(images[index].url);
-
     const interval = setInterval(() => {
-      setFade(false);
-      setTimeout(() => {
-        index = (index + 1) % images.length;
-        setPath(images[index].url);
-        setFade(true);
-      }, 1000);
-    }, 5000);
+      setFade(false); // Start fade-out effect
 
-    return () => clearInterval(interval);
+      setTimeout(() => {
+        setIndex((prevIndex) => (prevIndex + 1) % images.length); // Update index safely
+        setFade(true); // Fade-in new image
+      }, 1000); // Wait 1 sec before changing image
+    }, 5000); // Change image every 5 sec
+
+    return () => clearInterval(interval); // Cleanup interval on unmount
   }, []);
 
   return (
     <img
-      src={path}
+      src={images[index].url}
       alt="Slideshow"
       style={{
         height: "100%",
