@@ -17,8 +17,6 @@ const [user,setUser]= useState([])
         fetchUser(); // Call the function inside useEffect
     }, []);
     
-
-
   return (
     <div className='container-fluid p-4'>
         {user.map((user)=>(

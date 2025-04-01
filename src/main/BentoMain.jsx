@@ -1,6 +1,7 @@
 import React from 'react'
 import ListSection from '../Components/listSection'
 import RandomImgae from '../Components/randomImgae'
+import Recipies from '../Components/recipies'
 
 const BentoMain = () => {
   return (
@@ -13,8 +14,8 @@ const BentoMain = () => {
             <div className="col-3 same-h list-section">
                  <ListSection/>
             </div>
-            <div className="col-6 same-h recipies-section">
-
+            <div className="col-6 same-h recipies-section overflow-x-hidden overflow-y-scroll">
+                  <Recipies/>
             </div>
             <div className="col-3 same-h product-section">
 
